@@ -1,0 +1,9 @@
+<% if prototype.image.present? %>
+<%= link_to prototype_path(prototype) do %>
+<%= image_tag url_for(prototype.image) %>
+<% end %>
+<% end %>
+
+<%= link_to prototype.title, prototype_path(prototype) %>
+<%= prototype.catch_copy %>
+<%= prototype.user.user %>

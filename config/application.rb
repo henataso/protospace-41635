@@ -1,3 +1,7 @@
+ActiveSupport.on_load(:active_storage_blob) do
+  ActiveStorage::Current.host = 'http://localhost:3000'
+end
+
 require_relative "boot"
 
 require "rails/all"
@@ -20,3 +24,4 @@ module Protospace41635
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+

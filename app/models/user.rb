@@ -8,4 +8,8 @@ class User < ApplicationRecord
   validates :profile, presence: true
   validates :affiliation, presence: true
   validates :post, presence: true
+
+  has_many :prototypes
+  has_many :comment
+  
 end
