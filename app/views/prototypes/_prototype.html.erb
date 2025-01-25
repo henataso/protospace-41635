@@ -1,9 +1,19 @@
+<div class="card">
+<div class="card__img">
 <% if prototype.image.present? %>
 <%= link_to prototype_path(prototype) do %>
 <%= image_tag url_for(prototype.image) %>
 <% end %>
 <% end %>
+</div>
 
+<div class="card__title">
 <%= link_to prototype.title, prototype_path(prototype) %>
+</div>
+<div class="card__summary">
 <%= prototype.catch_copy %>
-<%= prototype.user.user %>
+</div>
+<div class="card__user">
+<%= link_to prototype.user.user, user_path(prototype.user) %>
+</div>
+</div>

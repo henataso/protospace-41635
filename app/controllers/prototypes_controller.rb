@@ -26,11 +26,16 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
+
   end
 
   def update
     @prototype = Prototype.find(params[:id])
-     
+    
+    if params[:prototype][:title].blank? || params[:prototype][:catch_copy].blank? || params[:prototype][:concept].blank? || params[:prototype][:image].blank?
+      return render :edit
+    end
+
     if @prototype.update(prototype_params)
       redirect_to @prototype, notice: 'プロトタイプが更新されました'
     else
@@ -53,8 +58,9 @@ class PrototypesController < ApplicationController
 
   def ensure_correct_user
     @prototype = Prototype.find(params[:id])
-    unless @prototype.user == current_user
-      redirect_to root_path, alert: 'あなたはこのプロトタイプの編集権限がありません。'
+    unless current_user && current_user.id == @prototype.user_id
+      redirect_to root_path, alert: 'You are not authorized to edit this prototype.'
     end
+
   end
 end
